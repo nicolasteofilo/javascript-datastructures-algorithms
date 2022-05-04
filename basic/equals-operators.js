@@ -1,5 +1,5 @@
 console.log("text" ? true : false); // true - if text is not null or undefined
-console.log("text" == true); //
+console.log("text" == true); // false
 
 console.log("text" === true); // false
 console.log("text" === "text"); // true
