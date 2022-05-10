@@ -91,7 +91,7 @@ function addElement(array, position, ...elements) {
 addElement(citys, 2, "Detroit");
 console.log(citys);
 
-// --- BIDIMENSIONAL ARRAY ---
+// --- Bidimensional ARRAY ---
 // array in array, it's called a bidimensional array
 let averageTemp = [];
 averageTemp[0] = [72, 75, 79, 79, 81, 81];
@@ -106,4 +106,27 @@ function printMatrix(myMatrix) {
 }
 
 printMatrix(averageTemp);
-// console.table(averageTemp);
+console.table(averageTemp);
+
+// --- Multidimensional ARRAYS ---
+const matrix3x3x3 = [];
+
+for (let i = 0; i < 3; i++) {
+  matrix3x3x3[i] = []; // creates a new array inside the matrix
+  for (let j = 0; j < 3; j++) {
+    matrix3x3x3[i][j] = [];
+    for (let k = 0; k < 3; k++) {
+      matrix3x3x3[i][j][k] = i + j + k;
+    }
+  }
+}
+
+for (let i = 0; i < matrix3x3x3.length; i++) {
+  for (let j = 0; j < matrix3x3x3[i].length; j++) {
+    for (let k = 0; k < matrix3x3x3[i][j].length; k++) {
+      console.log(matrix3x3x3[i][j][k]);
+    }
+  }
+}
+
+console.table(matrix3x3x3);
