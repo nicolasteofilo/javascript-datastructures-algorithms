@@ -137,3 +137,10 @@ const positiveNumbers = [1, 2, 3, 4, 5];
 const negativeNumbers = [-1, -2, -3, -4, -5];
 let concatArrays = negativeNumbers.concat(positiveNumbers, zero);
 console.log(concatArrays);
+
+const numbersIterate = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+const isEven = (x) => x % 2 === 0;
+
+numbersIterate.every(isEven); // will iterate until the function returns false
+numbersIterate.some(isEven); // will iterate until the function returns true
