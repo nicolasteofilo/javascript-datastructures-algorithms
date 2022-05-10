@@ -144,3 +144,5 @@ const isEven = (x) => x % 2 === 0;
 
 numbersIterate.every(isEven); // will iterate until the function returns false
 numbersIterate.some(isEven); // will iterate until the function returns true
+
+numbers.forEach((i) => (isEven(i) ? console.log(i) : null));
