@@ -138,6 +138,8 @@ const negativeNumbers = [-1, -2, -3, -4, -5];
 let concatArrays = negativeNumbers.concat(positiveNumbers, zero);
 console.log(concatArrays);
 
+// --- ITERATORS ---
+
 const numbersIterate = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 const isEven = (x) => x % 2 === 0;
@@ -145,4 +147,10 @@ const isEven = (x) => x % 2 === 0;
 numbersIterate.every(isEven); // will iterate until the function returns false
 numbersIterate.some(isEven); // will iterate until the function returns true
 
-numbers.forEach((i) => (isEven(i) ? console.log(i) : null));
+numbersIterate.forEach((i) => (isEven(i) ? console.log(i) : null));
+
+const myMap = numbersIterate.map((i) => i % 2 === 0); // return a new array with the result of the function (boolean)
+console.log(myMap);
+
+const evenNumbers = numbersIterate.filter((i) => i % 2 === 0); // return a new array with the result of the function (the values)
+console.log(evenNumbers);
