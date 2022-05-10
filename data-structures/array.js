@@ -37,3 +37,6 @@ Array.prototype.insertFirstPosition = function (value) {
 };
 numbers.insertFirstPosition(-1);
 console.log(numbers);
+
+numbers.unshift(-2);
+console.log(numbers);
