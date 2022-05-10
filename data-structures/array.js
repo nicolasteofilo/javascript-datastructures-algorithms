@@ -154,3 +154,8 @@ console.log(myMap);
 
 const evenNumbers = numbersIterate.filter((i) => i % 2 === 0); // return a new array with the result of the function (the values)
 console.log(evenNumbers);
+
+const reduceNumbers = numbersIterate.reduce(
+  (previous, curr) => previous + curr
+);
+console.log(reduceNumbers);
