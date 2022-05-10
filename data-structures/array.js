@@ -130,3 +130,10 @@ for (let i = 0; i < matrix3x3x3.length; i++) {
 }
 
 console.table(matrix3x3x3);
+
+// Concatenation of arrays
+const zero = 0;
+const positiveNumbers = [1, 2, 3, 4, 5];
+const negativeNumbers = [-1, -2, -3, -4, -5];
+let concatArrays = negativeNumbers.concat(positiveNumbers, zero);
+console.log(concatArrays);
