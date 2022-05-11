@@ -159,3 +159,10 @@ const reduceNumbers = numbersIterate.reduce(
   (previous, curr) => previous + curr
 );
 console.log(reduceNumbers);
+
+const find = numbersIterate.find((i) => i % 2 === 0);
+const findIndex = numbersIterate.findIndex((i) => i === 14);
+console.log({
+  find,
+  findIndex,
+});
