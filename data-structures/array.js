@@ -195,8 +195,7 @@ for (let i = 0; i < names.length; i++) {
 // KEYS
 const aKeys = names.keys();
 console.log(aKeys.next());
-for (let i = 0; i < names.length; i++) {
-  const n = aKeys.next().value;
+for (const n of aKeys) {
   console.log(n);
 }
 
@@ -204,9 +203,8 @@ for (let i = 0; i < names.length; i++) {
 const aValues = names.values();
 console.log(aValues.next());
 console.log(aValues.next());
-for (let i = 0; i < names.length; i++) {
-  const value = aValues.next().value;
-  console.log(value);
+for (const n of aValues) {
+  console.log(n);
 }
 
 // FROM
@@ -218,4 +216,8 @@ let namesWithEWithValues = [];
 for (let i = 0; i < namesWithE.length; i++) {
   namesWithE[i] ? namesWithEWithValues.push(names2[i]) : null;
 }
-console.log(namesWithEWithValues);
+console.log("names with 'e': ", namesWithEWithValues);
+
+// FROM OF
+let namesCopy = Array.of(...names);
+console.log(namesCopy);
