@@ -221,3 +221,13 @@ console.log("names with 'e': ", namesWithEWithValues);
 // FROM OF
 let namesCopy = Array.of(...names);
 console.log(namesCopy);
+
+// FILL
+namesCopy = Array.of(1, 2, 3, 4, 5, 6);
+console.log(namesCopy);
+
+namesCopy.fill(0);
+console.log(namesCopy);
+
+namesCopy.fill(5, 1, 5); // values, inicial index, final index -> the final index is not included
+console.log(namesCopy);
