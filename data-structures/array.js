@@ -170,3 +170,40 @@ console.log({
 for (const n of numbersIterate) {
   console.log(n % 2 === 0 ? "even" : "odd");
 }
+
+for (const n of numbersIterate) {
+  console.log(n % 2 === 0 ? "even" : "odd");
+}
+
+// --- @@ITERATOR ---
+
+let iterator = numbersIterate[Symbol.iterator]();
+console.log(iterator.next().value);
+for (const n of iterator) {
+  console.log(n);
+}
+
+const names = ["John", "Jane", "Mary", "Mark", "Bob"];
+
+let entries = names.entries();
+// console.log(entries.next().value);
+for (let i = 0; i < names.length; i++) {
+  const n = entries.next().value;
+  console.log(n[1]);
+}
+
+const aKeys = names.keys();
+
+console.log(aKeys.next());
+for (let i = 0; i < names.length; i++) {
+  const n = aKeys.next().value;
+  console.log(n);
+}
+
+const aValues = names.values();
+console.log(aValues.next());
+console.log(aValues.next());
+for (let i = 0; i < names.length; i++) {
+  const value = aValues.next().value;
+  console.log(value);
+}
