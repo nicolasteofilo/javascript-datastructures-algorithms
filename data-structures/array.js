@@ -166,3 +166,7 @@ console.log({
   find,
   findIndex,
 });
+
+for (const n of numbersIterate) {
+  console.log(n % 2 === 0 ? "even" : "odd");
+}
