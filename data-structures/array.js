@@ -184,7 +184,7 @@ for (const n of iterator) {
 
 const names = ["John", "Jane", "Mary", "Mark", "Bob"];
 
-// ENTRIES
+// entries
 let entries = names.entries();
 // console.log(entries.next().value);
 for (let i = 0; i < names.length; i++) {
@@ -192,14 +192,14 @@ for (let i = 0; i < names.length; i++) {
   console.log(n[1]);
 }
 
-// KEYS
+// keys
 const aKeys = names.keys();
 console.log(aKeys.next());
 for (const n of aKeys) {
   console.log(n);
 }
 
-// VALUES
+// values
 const aValues = names.values();
 console.log(aValues.next());
 console.log(aValues.next());
@@ -207,7 +207,7 @@ for (const n of aValues) {
   console.log(n);
 }
 
-// FROM
+// from
 const names2 = Array.from(names);
 console.log(names2);
 
@@ -218,11 +218,11 @@ for (let i = 0; i < namesWithE.length; i++) {
 }
 console.log("names with 'e': ", namesWithEWithValues);
 
-// FROM OF
+// Array.of
 let namesCopy = Array.of(...names);
 console.log(namesCopy);
 
-// FILL
+// fill
 namesCopy = Array.of(1, 2, 3, 4, 5, 6);
 console.log(namesCopy);
 
@@ -231,3 +231,12 @@ console.log(namesCopy);
 
 namesCopy.fill(5, 1, 5); // values, inicial index, final index -> the final index is not included
 console.log(namesCopy);
+
+// copyWithin
+let copyArray = [1, 2, 3, 4, 5, 6];
+copyArray.copyWithin(0, 3);
+console.log(copyArray);
+
+copyArray = [1, 2, 3, 4, 5, 6];
+copyArray.copyWithin(1, 3, 5); // copy values from 3 to 5 ( index 5 not include ) to 1 index
+console.log(copyArray);
