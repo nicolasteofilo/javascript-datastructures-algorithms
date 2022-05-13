@@ -315,3 +315,6 @@ function multipleOf13(element, index, array) {
 }
 console.log("findIndex", numbersSort.findIndex(multipleOf13));
 console.log("find", numbersSort.find(multipleOf13));
+
+// convert to string
+console.log(numbersSort.toString());
