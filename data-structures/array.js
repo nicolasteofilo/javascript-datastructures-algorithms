@@ -240,3 +240,12 @@ console.log(copyArray);
 copyArray = [1, 2, 3, 4, 5, 6];
 copyArray.copyWithin(1, 3, 5); // copy values from 3 to 5 ( index 5 not include ) to 1 index
 console.log(copyArray);
+
+// SORT
+
+const numbersSort = [1, 2, 3, 4, 5, 6];
+numbersSort.reverse();
+console.log("numbersSort with reverse: ", numbersSort);
+
+numbersSort.sort((a, b) => a - b);
+console.log("numbersSort with sort: ", numbersSort);
