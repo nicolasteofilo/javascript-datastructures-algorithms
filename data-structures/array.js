@@ -243,7 +243,7 @@ console.log(copyArray);
 
 // SORT
 
-const numbersSort = [1, 2, 3, 4, 5, 6];
+let numbersSort = [1, 2, 3, 4, 5, 6];
 numbersSort.reverse();
 console.log("numbersSort with reverse: ", numbersSort);
 
@@ -299,3 +299,12 @@ console.log(
     return 0;
   })
 );
+
+// search
+numbersSort = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(numbersSort.indexOf(10));
+console.log(numbers.indexOf(100));
+
+numbersSort.push(10);
+console.log(numbers.lastIndexOf(10));
+console.log(numbers.lastIndexOf(100));
