@@ -250,6 +250,7 @@ console.log("numbersSort with reverse: ", numbersSort);
 numbersSort.sort((a, b) => a - b);
 console.log("numbersSort with sort: ", numbersSort);
 
+// order by age
 const friend = [
   {
     name: "John",
@@ -280,3 +281,21 @@ function comparePerson(a, b) {
   return 0;
 }
 console.log(friend.sort(comparePerson));
+
+// order strings
+let namesSort = ["John", "Ana", "ana", "Mark", "Bob"];
+console.log(namesSort.sort());
+
+namesSort = ["John", "Ana", "ana", "Mark", "Bob"];
+console.log(
+  namesSort.sort((a, b) => {
+    if (a.toLowerCase() < b.toLowerCase()) {
+      return -1;
+    }
+
+    if (a.toLowerCase() > b.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  })
+);
