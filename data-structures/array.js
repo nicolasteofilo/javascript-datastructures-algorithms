@@ -308,3 +308,10 @@ console.log(numbers.indexOf(100));
 numbersSort.push(10);
 console.log(numbers.lastIndexOf(10));
 console.log(numbers.lastIndexOf(100));
+
+numbersSort = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 26];
+function multipleOf13(element, index, array) {
+  return element % 13 === 0;
+}
+console.log("findIndex", numbersSort.findIndex(multipleOf13));
+console.log("find", numbersSort.find(multipleOf13));
