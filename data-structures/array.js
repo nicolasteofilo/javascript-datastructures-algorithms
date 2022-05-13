@@ -249,3 +249,34 @@ console.log("numbersSort with reverse: ", numbersSort);
 
 numbersSort.sort((a, b) => a - b);
 console.log("numbersSort with sort: ", numbersSort);
+
+const friend = [
+  {
+    name: "John",
+    age: 30,
+  },
+  {
+    name: "Jane",
+    age: 25,
+  },
+  {
+    name: "Mark",
+    age: 28,
+  },
+  {
+    name: "Bob",
+    age: 20,
+  },
+];
+
+function comparePerson(a, b) {
+  if (a.age < b.age) {
+    return -1;
+  }
+
+  if (a.age > b.age) {
+    return 1;
+  }
+  return 0;
+}
+console.log(friend.sort(comparePerson));
