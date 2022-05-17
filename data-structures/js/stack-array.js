@@ -1,6 +1,6 @@
-class Stack {
+export class Stack {
   constructor() {
-    this.items = [];
+    this.items = new Array();
   }
 
   push(element) {
