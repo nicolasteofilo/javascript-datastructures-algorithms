@@ -13,3 +13,6 @@ console.log(stack.peek());
 
 stack.push(8);
 console.log(stack.toString());
+
+console.log(Object.getOwnPropertyNames(stack));
+console.log(Object.keys(stack));
