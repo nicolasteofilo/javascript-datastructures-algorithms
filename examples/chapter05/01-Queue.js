@@ -20,6 +20,12 @@ class Queue {
     return result;
   }
 
+  clear() {
+    this.count = 0;
+    this.items = 0;
+    this.lowestCount = 0;
+  }
+
   isEmpty() {
     if (this.items === 0) {
       return true;
