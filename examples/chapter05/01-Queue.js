@@ -19,4 +19,11 @@ class Queue {
     this.lowestCount++;
     return result;
   }
+
+  isEmpty() {
+    if (this.items === 0) {
+      return true;
+    }
+    return false;
+  }
 }
