@@ -43,10 +43,11 @@ class Queue {
     return objString;
   }
 
+  size() {
+    return this.count - this.lowestCount;
+  }
+
   isEmpty() {
-    if (this.items === 0) {
-      return true;
-    }
-    return false;
+    return this.size() === 0;
   }
 }
