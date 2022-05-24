@@ -9,4 +9,14 @@ class Queue {
     this.items[this.count] = element;
     this.count++; // ==> this.count = this.count + 1
   }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    const result = this.items[this.lowestCount];
+    delete this.items[this.lowestCount];
+    this.lowestCount++;
+    return result;
+  }
 }
