@@ -51,4 +51,17 @@ export class Deque {
         return result
       }
     }
+
+  peekFront() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    return this.items[this.lowestCount];
   }
+
+  peekBack() {
+    if(!this.isEmpty()) {
+      return this.items[this.count - 1]
+    }
+  }  
+}
