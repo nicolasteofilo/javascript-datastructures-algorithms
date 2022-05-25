@@ -63,5 +63,11 @@ export class Deque {
     if(!this.isEmpty()) {
       return this.items[this.count - 1]
     }
-  }  
+  }
+
+  clear() {
+    this.items = {};
+    this.count = 0;
+    this.lowestCount = 0;
+  }
 }
