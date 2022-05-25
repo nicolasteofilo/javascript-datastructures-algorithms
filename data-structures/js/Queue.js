@@ -1,4 +1,4 @@
-class Queue {
+export class Queue {
   constructor() {
     this.count = 0;
     this.lowestCount = 0;
@@ -33,7 +33,7 @@ class Queue {
   }
 
   toString() {
-    if (this.isEmpty) {
+    if (this.isEmpty()) {
       return "";
     }
     let objString = `${this.items[this.lowestCount]}`;
