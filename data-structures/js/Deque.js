@@ -42,4 +42,13 @@ export class Deque {
       this.lowestCount++
       return result
     }}
+
+  removeBack() {
+    if(!this.isEmpty()) {
+        this.count--
+        const result = this.items[this.count]
+        delete this.items[this.count]
+        return result
+      }
+    }
   }
