@@ -29,4 +29,9 @@ export class Deque {
       this.items[0] = element
     }
   }
+
+  addBack(element) {
+    this.items.push(element)
+    this.count++
+  }
 }
