@@ -2,7 +2,7 @@ export class Deque {
   constructor() {
     this.count = 0
     this.lowestCount = 0
-    this.items = []
+    this.items = {}
   }
 
   size() {
@@ -31,7 +31,15 @@ export class Deque {
   }
 
   addBack(element) {
-    this.items.push(element)
-    this.count++
+    this.items[this.count] = element;
+    this.count++;
   }
-}
+
+  removeFront() {
+    if(!this.isEmpty()) {
+      const result = this.items[this.lowestCount]
+      delete this.items[this.lowestCount]
+      this.lowestCount++
+      return result
+    }}
+  }
