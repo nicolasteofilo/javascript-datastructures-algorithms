@@ -24,12 +24,29 @@ export default class LinkedList {
     this.count++;
   }
 
-  print() {
-    console.log(this.head);
-    return this.head;
+  removeAt(index) {
+    if (index >= 0 < this.count) {
+      let current = this.head;
+
+      if (index === 0) {
+        this.head = current.next;
+      } else {
+        let previous = current.next;
+
+        for (let i; i < index; i++) {
+          previous = current;
+          current = current.next;
+        }
+        previous.next = current.next;
+      }
+      this.count--;
+      return current.element;
+    }
+    return undefined;
   }
 }
 
 const list = new LinkedList();
-list.push(15);
-list.push(16);
+list.push(15); // { value: 15, next: null }
+list.push(16); // { value: 15, next: { value: 16, next: null } }
+console.log(list.removeAt(2));
