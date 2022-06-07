@@ -11,21 +11,20 @@ export default class LinkedList {
     const node = new Node(element);
     let current;
     if (this.head == null) {
+      // catches null && undefined
       this.head = node;
     } else {
       current = this.head;
       while (current.next != null) {
         current = current.next;
       }
-
       current.next = node;
     }
-
     this.count++;
   }
 
   getElementAt(index) {
-    if (index === 0) {
+    if (index >= 0 && index <= this.count) {
       let node = this.head;
       for (let i = 0; i < index && node != null; i++) {
         node = node.next;
@@ -36,13 +35,12 @@ export default class LinkedList {
   }
 
   removeAt(index) {
-    if (index >= 0 < this.count) {
+    if (index >= 0 && index < this.count) {
       let current = this.head;
-
       if (index === 0) {
         this.head = current.next;
       } else {
-        let previous = this.getElementAt(index - 1);
+        const previous = this.getElementAt(index - 1);
         current = previous.next;
         previous.next = current.next;
       }
@@ -54,6 +52,7 @@ export default class LinkedList {
 }
 
 const list = new LinkedList();
-list.push(15); // { value: 15, next: null }
-list.push(16); // { value: 15, next: { value: 16, next: null } }
-console.log(list.removeAt(2));
+list.push(14); // { value: 14, next: null }
+list.push(19); // { value: 14, next: { value: 19, next: null } }
+list.removeAt(1); // { value: 14, next: null }
+console.log(JSON.stringify(list.head, null, 2));
