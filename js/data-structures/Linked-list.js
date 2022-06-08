@@ -34,6 +34,24 @@ export default class LinkedList {
     return undefined;
   }
 
+  insert(element, index) {
+    if (index >= 0 && index <= this.count) {
+      const node = new Node(element);
+      if (index === 0) {
+        const current = this.head;
+        node.next = current;
+        this.head = node;
+      } else {
+        const previous = this.getElementAt(index - 1);
+        node.next = previous.next;
+        previous.next = node;
+      }
+      this.count++;
+      return true;
+    }
+    return false;
+  }
+
   removeAt(index) {
     if (index >= 0 && index < this.count) {
       let current = this.head;
@@ -50,23 +68,9 @@ export default class LinkedList {
     return undefined;
   }
 
-  inset(element, index) {
-    if (index >= 0 && index <= this.count) {
-      const node = new Node(element);
-      if (index === 0) {
-        const current = this.head;
-        node.next = current;
-        this.head = node;
-      } else {
-        const previous = this.getElementAt(index - 1);
-        const current = previous.next;
-        node.next = current;
-        previous.next = node;
-      }
-      this.count++;
-      return true;
-    }
-    return false;
+  remove(element) {
+    const index = this.indexOf(element);
+    return this.removeAt(index);
   }
 
   indexOf(element) {
@@ -80,25 +84,40 @@ export default class LinkedList {
     return -1;
   }
 
-  remove(element) {
-    const index = this.indexOf(element);
-    return this.removeAt(index);
+  isEmpty() {
+    return this.size() === 0;
   }
 
   size() {
     return this.count;
   }
 
-  isEmpty() {
-    return this.size() === 0;
-  }
-
   getHead() {
     return this.head;
+  }
+
+  clear() {
+    this.head = undefined;
+    this.count = 0;
+  }
+
+  toString() {
+    if (this.head === null || undefined) {
+      return "";
+    }
+
+    let objString = `${this.head}`;
+    let current = this.head.next;
+    for (let i = 1; i < this.size(); i++) {
+      objString = `${objString},${current.key}`;
+      current = current.next;
+    }
+    return objString;
   }
 }
 
 const list = new LinkedList();
 list.push(14); // { value: 14, next: null }
 list.push(15); // { value: 14, next: null }
-console.log(JSON.stringify(list.head, null, 2));
+list.remove(15);
+list.toString();
