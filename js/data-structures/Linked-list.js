@@ -79,11 +79,14 @@ export default class LinkedList {
     }
     return -1;
   }
+
+  remove(element) {
+    const index = this.indexOf(element);
+    return this.removeAt(index);
+  }
 }
 
 const list = new LinkedList();
 list.push(14); // { value: 14, next: null }
-list.push(19); // { value: 14, next: { value: 19, next: null } }
 list.push(15); // { value: 14, next: null }
 console.log(JSON.stringify(list.head, null, 2));
-console.log(list.head.key);
