@@ -68,20 +68,20 @@ export default class LinkedList {
     return undefined;
   }
 
-  remove(element) {
-    const index = this.indexOf(element);
-    return this.removeAt(index);
-  }
-
   indexOf(element) {
     let current = this.head;
     for (let i = 0; i < this.size() && current != null; i++) {
-      if (this.equalFn(element, current.element)) {
+      if (this.equalFn(element, current.key)) {
         return i;
       }
       current = current.next;
     }
     return -1;
+  }
+
+  remove(element) {
+    const index = this.indexOf(element);
+    return this.removeAt(index);
   }
 
   isEmpty() {
@@ -118,7 +118,5 @@ export default class LinkedList {
 
 const list = new LinkedList();
 list.push(14); // { value: 14, next: null }
-console.warn(list.toString());
-list.push(15); // { value: 14, next: null }
-console.warn(list.toString());
-console.warn(list.toString());
+list.push(15); // { value: 14, next: { value: 15, next: null } }
+list.remove(14); // // { value: 14, next: null }
