@@ -54,7 +54,7 @@ export default class LinkedList {
     if (index >= 0 && index <= this.count) {
       const node = new Node(element);
       if (index === 0) {
-        const current = node;
+        const current = this.head;
         node.next = current;
         this.head = node;
       } else {
@@ -68,10 +68,22 @@ export default class LinkedList {
     }
     return false;
   }
+
+  indexOf(element) {
+    let current = this.head;
+    for (let i = 0; i < this.count && current != null; i++) {
+      if (this.equalFn(element, current.element)) {
+        return i;
+      }
+      current = current.next;
+    }
+    return -1;
+  }
 }
 
 const list = new LinkedList();
 list.push(14); // { value: 14, next: null }
 list.push(19); // { value: 14, next: { value: 19, next: null } }
-list.removeAt(1); // { value: 14, next: null }
+list.push(15); // { value: 14, next: null }
 console.log(JSON.stringify(list.head, null, 2));
+console.log(list.head.key);
