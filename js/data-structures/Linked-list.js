@@ -84,6 +84,10 @@ export default class LinkedList {
     const index = this.indexOf(element);
     return this.removeAt(index);
   }
+
+  size() {
+    return this.count;
+  }
 }
 
 const list = new LinkedList();
