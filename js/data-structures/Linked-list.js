@@ -88,6 +88,14 @@ export default class LinkedList {
   size() {
     return this.count;
   }
+
+  isEmpty() {
+    return this.size() === 0;
+  }
+
+  getHead() {
+    return this.head;
+  }
 }
 
 const list = new LinkedList();
