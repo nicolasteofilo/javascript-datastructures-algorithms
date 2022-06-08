@@ -102,7 +102,7 @@ export default class LinkedList {
   }
 
   toString() {
-    if (this.head === null || undefined) {
+    if (this.isEmpty()) {
       return "";
     }
 
@@ -118,6 +118,7 @@ export default class LinkedList {
 
 const list = new LinkedList();
 list.push(14); // { value: 14, next: null }
+console.warn(list.toString());
 list.push(15); // { value: 14, next: null }
-list.remove(15);
-list.toString();
+console.warn(list.toString());
+console.warn(list.toString());
