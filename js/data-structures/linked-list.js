@@ -1,6 +1,6 @@
 import { defaultEquals } from "../utils.js";
 import { Node } from "./models/node.js";
-export default class LinkedList {
+export class LinkedList {
   constructor(equalFn = defaultEquals) {
     this.count = 0;
     this.head = undefined;
