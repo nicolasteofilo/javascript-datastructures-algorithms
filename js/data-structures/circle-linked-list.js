@@ -12,7 +12,7 @@ export class CircleLinkedList extends LinkedList {
     if (index == 0 && index <= this.count) {
       const node = new Node(element);
       let current = this.head;
-      if (index === 0) {
+      if (index === 0) {  
         if (this.head === null || this.head === undefined) {
           this.head = node;
           node.next = this.head;
@@ -60,7 +60,7 @@ export class CircleLinkedList extends LinkedList {
 }
 
 const list = new CircleLinkedList();
-list.insert(1, 0);
+list.insert(2, 0);
 console.log(list.toString());
 list.removeAt(0);
 console.log(list.toString());
