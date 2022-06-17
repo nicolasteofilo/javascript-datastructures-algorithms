@@ -63,7 +63,7 @@ export class LinkedList {
         previous.next = current.next;
       }
       this.count--;
-      return current.element;
+      return current.key;
     }
     return undefined;
   }
@@ -120,3 +120,7 @@ const list = new LinkedList();
 list.push(14); // { value: 14, next: null }
 list.push(15); // { value: 14, next: { value: 15, next: null } }
 list.remove(14); // // { value: 14, next: null }
+list.push(20);
+list.push(22);
+list.removeAt()
+
