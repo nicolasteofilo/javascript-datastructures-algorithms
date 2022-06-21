@@ -19,6 +19,17 @@ export class Set {
     return Object.values(this.items)
   }
 
+  valuesLegacy() {
+    let values = []
+    for(let key in this.items) {
+      const keyExists = this.values().find((el) => String(el) === String(key))
+      if(keyExists) {
+        values.push(keyExists)
+      }
+    }
+    return values
+  }
+
   delete(element) {
     if(this.has(element)) {
       delete this.items[element]
@@ -42,3 +53,10 @@ export class Set {
     return count
   }
 }
+
+
+const set = new Set
+set.add(1)
+set.add(2)
+const size = set.valuesLegacy()
+console.log(size);
