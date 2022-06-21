@@ -18,4 +18,16 @@ export class Set {
   values() {
     return Object.values(this.items)
   }
-} 
+
+  delete(element) {
+    if(this.has(element)) {
+      delete this.items[element]
+      return true
+    }
+    return false
+  }
+
+  clear() {
+    this.items = {}
+  }
+}
