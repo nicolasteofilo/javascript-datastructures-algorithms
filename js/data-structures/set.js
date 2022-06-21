@@ -14,4 +14,8 @@ export class Set {
     }
     return false
   }
+
+  values() {
+    return Object.values(this.items)
+  }
 } 
