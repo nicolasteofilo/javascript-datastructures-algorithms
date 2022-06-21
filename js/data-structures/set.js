@@ -59,14 +59,30 @@ export class Set {
     otherSet.values().forEach(value => unionSet.add(value))
     return unionSet
   }
+
+  intersection(otherSet) {
+    const intersectionSet = new Set();
+    for(let i = 0; i < this.size(); i++) {
+      for(let j = 0; j < otherSet.size(); j++) {
+        if(this.values()[i] === otherSet.values()[j]) {
+          intersectionSet.add(otherSet.values()[j])
+        }
+      } 
+    }
+    return intersectionSet
+  }
 }
 
 const primarySet = new Set()
 const secondarySet = new Set()
 
 primarySet.add(1)
+primarySet.add(2)
 secondarySet.add(2)
+secondarySet.add(3)
 
 const union = primarySet.unior(secondarySet)
-secondarySet.add(3)
+const intersection = primarySet.intersection(secondarySet)
+
 console.log(union.values())
+console.log(intersection.values())
