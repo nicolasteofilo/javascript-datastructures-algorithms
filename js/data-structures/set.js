@@ -52,11 +52,21 @@ export class Set {
     }
     return count
   }
+
+  unior(otherSet) {
+    const unionSet = new Set();
+    this.values().forEach(value => unionSet.add(value))
+    otherSet.values().forEach(value => unionSet.add(value))
+    return unionSet
+  }
 }
 
+const primarySet = new Set()
+const secondarySet = new Set()
 
-const set = new Set
-set.add(1)
-set.add(2)
-const size = set.valuesLegacy()
-console.log(size);
+primarySet.add(1)
+secondarySet.add(2)
+
+const union = primarySet.unior(secondarySet)
+secondarySet.add(3)
+console.log(union.values())
