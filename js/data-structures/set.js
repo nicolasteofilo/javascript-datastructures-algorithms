@@ -30,4 +30,15 @@ export class Set {
   clear() {
     this.items = {}
   }
+
+  size() {
+    let count = 0
+    for(let key in this.items) {
+      const keyExists = this.values().find((el) => String(el) === String(key))
+      if(keyExists) {
+        count++
+      }
+    }
+    return count
+  }
 }
