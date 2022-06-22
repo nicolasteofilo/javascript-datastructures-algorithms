@@ -4,7 +4,8 @@ export class Set {
   }
 
   has(element) {
-    return Object.prototype.hasOwnProperty(this.items, element)
+    const exists = this.values().some(el => el == element)
+    return exists
   }
 
   add(element) {
