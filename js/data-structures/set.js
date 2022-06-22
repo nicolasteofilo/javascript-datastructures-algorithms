@@ -62,27 +62,70 @@ export class Set {
 
   intersection(otherSet) {
     const intersectionSet = new Set();
-    for(let i = 0; i < this.size(); i++) {
-      for(let j = 0; j < otherSet.size(); j++) {
-        if(this.values()[i] === otherSet.values()[j]) {
-          intersectionSet.add(otherSet.values()[j])
-        }
-      } 
+    const values = this.values()
+    const otherValues = otherSet.values()
+    let biggerSet = values
+    let samllerSet = otherValues
+    
+    if(otherValues.length - values.length > 0) {
+      biggerSet = otherValues
+      samllerSet = values
     }
+
+    samllerSet.forEach(value => {
+      if(biggerSet.includes(value)) {
+        intersectionSet.add(value)
+      }
+    })
+
     return intersectionSet
+  }
+
+  difference(otherSet) {
+    const differenceSet = new Set();
+    this.values().forEach(value => {
+      if(!otherSet.values().includes(value)) {
+        console.log(value)
+        differenceSet.add(value)
+      }
+    })
+    return differenceSet
+  }
+
+  isSubsetOf(otherSet) {
+    if(this.size() > otherSet.size()) {
+      return false
+    }
+    let isSubset = true
+    this.values().every(value => {
+      const find = otherSet.values().find(el => el == value)
+      if(!find) {
+        isSubset = false
+        return false
+      }
+      return true
+    })
+    return isSubset
   }
 }
 
-const primarySet = new Set()
-const secondarySet = new Set()
+const setA = new Set()
+const setB = new Set()
 
-primarySet.add(1)
-primarySet.add(2)
-secondarySet.add(2)
-secondarySet.add(3)
+setA.add(1)
+setA.add(2)
+setA.add(3)
 
-const union = primarySet.unior(secondarySet)
-const intersection = primarySet.intersection(secondarySet)
+setB.add(2)
+setB.add(3)
 
-console.log(union.values())
-console.log(intersection.values())
+const unionAB = setA.unior(setB)
+const intersectionAB = setA.intersection(setB)
+const differenceAB = setA.difference(setB)
+
+console.log('unionAB: ', unionAB.values())
+console.log('intersectionAB: ', intersectionAB.values())
+console.log('differenceAB: ', differenceAB.values())
+
+const BIsSubsetInA = setB.isSubsetOf(setA)
+console.log({ BIsSubsetInA })
