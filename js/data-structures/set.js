@@ -86,7 +86,6 @@ export class Set {
     const differenceSet = new Set();
     this.values().forEach(value => {
       if(!otherSet.values().includes(value)) {
-        console.log(value)
         differenceSet.add(value)
       }
     })

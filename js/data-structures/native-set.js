@@ -32,5 +32,16 @@ const intersection = (set1, set2) => {
   return intersectionSet
 }
 
+const difference = (set1, set2) => {
+  const diffrenceSet = new Set()
+  set1.forEach(value => {
+    if(!set2.has(value)) {
+      diffrenceSet.add(value)
+    }
+  })
+  return diffrenceSet
+}
+
 console.log(union(setA, setB))
 console.log(intersection(setA, setB))
+console.log(difference(setA, setB))
