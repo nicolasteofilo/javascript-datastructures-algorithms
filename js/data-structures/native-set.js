@@ -21,4 +21,16 @@ const union = (set1, set2) => {
   return unionSet
 }
 
+const intersection = (set1, set2) => {
+  const intersectionSet = new Set()
+  set1.forEach(value => {
+    if(set2.has(value)) {
+      intersectionSet.add(value)
+    }
+    return false
+  })
+  return intersectionSet
+}
+
 console.log(union(setA, setB))
+console.log(intersection(setA, setB))
