@@ -4,4 +4,8 @@ export class Dictionary {
     this.toStrFn = toStrFn
     this.table = {}
   }
+
+  hasKey(key) {
+    return this.table[key] != null
+  }
 }
