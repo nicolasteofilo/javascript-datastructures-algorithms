@@ -44,26 +44,35 @@ export class Dictionary {
   }
 
   keyValues() {
-    const valuesPairs = [
-    ]
-    for(const k in this.table) {
-      if(this.hasKey(k)) {
-        valuesPairs.push(this.table[k])
+    const valuesPairs = [];
+    for (const k in this.table) {
+      if (this.hasKey(k)) {
+        valuesPairs.push(this.table[k]);
       }
     }
-    return valuesPairs
+    return valuesPairs;
   }
 
   keys() {
-    return this.keyValues().map(valuePair => valuePair.key)
+    return this.keyValues().map((valuePair) => valuePair.key);
   }
 
   values() {
     const values = [];
     const valuesPair = this.keyValues();
-    for(let i = 0; i < valuesPair.length; i++) {
-      values.push(valuesPair[i].value)
+    for (let i = 0; i < valuesPair.length; i++) {
+      values.push(valuesPair[i].value);
     }
-    return values
+    return values;
+  }
+
+  forEach(callbackFn) {
+    const valuesPairs = this.keyValues();
+    for (let i = 0; i < valuesPairs.length; i++) {
+      const result = callbackFn(valuesPairs[i].key, valuesPairs[i].value);
+      if (result === false) {
+        break;
+      }
+    }
   }
 }
