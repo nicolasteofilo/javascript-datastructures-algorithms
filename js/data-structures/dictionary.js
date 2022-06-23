@@ -7,7 +7,7 @@ class ValuePair {
   }
 
   toString() {
-    return `[#${this.key}: ${this.value}]`
+    return `[#${this.key}: ${this.value}]`;
   }
 }
 
@@ -31,16 +31,22 @@ export class Dictionary {
   }
 
   delete(key) {
-    if(this.hasKey(key)) {
-      delete this.table[this.toStrFn(key)]
-      return true
+    if (this.hasKey(key)) {
+      delete this.table[this.toStrFn(key)];
+      return true;
     }
-    return false
+    return false;
+  }
+
+  get(key) {
+    const valuePair = this.table[this.toStrFn(key)];
+    return valuePair == null ? undefined : valuePair.value;
   }
 }
 
-const dictionary = new Dictionary()
-dictionary.set('instagram', '@nicolasteofilo')
-dictionary.set('youtube', 'Nicolas Teófilo')
-dictionary.delete('instagram')
-console.log(dictionary.table)
+const dictionary = new Dictionary();
+dictionary.set("instagram", "@nicolasteofilo");
+dictionary.set("youtube", "Nicolas Teófilo");
+dictionary.delete("instagram");
+console.log(dictionary.get("youtube"));
+console.log(dictionary.get("iii"));
