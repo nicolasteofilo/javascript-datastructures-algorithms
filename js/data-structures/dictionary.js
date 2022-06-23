@@ -75,4 +75,36 @@ export class Dictionary {
       }
     }
   }
+
+  size() {
+    return Object.keys(this.table).length
+  }
+
+  isEmpty() {
+    if(this.size() == 0) {
+      return true
+    }
+    return false
+  }
+
+  clear() {
+    this.table = {}
+  }
+
+  toString() {
+    if(this.isEmpty()) {
+      return ''
+    }
+    const valuesPair = this.keyValues();
+    let objString = `${valuesPair[0].toString()}`
+    for(let i = 1; i < valuesPair.length; i++) {
+      objString = `${objString}, ${valuesPair[i].toString()}`
+    }
+    return objString
+  }
 }
+
+const dictionary = new Dictionary();
+dictionary.set("instagram", "@nicolasteofilo");
+dictionary.set("youtube", "Nicolas Teófilo");
+console.log(dictionary.toString())
