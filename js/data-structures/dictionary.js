@@ -29,7 +29,18 @@ export class Dictionary {
     }
     return false;
   }
+
+  delete(key) {
+    if(this.hasKey(key)) {
+      delete this.table[this.toStrFn(key)]
+      return true
+    }
+    return false
+  }
 }
 
 const dictionary = new Dictionary()
-dictionary.set('1', '@nicolasteofilo')
+dictionary.set('instagram', '@nicolasteofilo')
+dictionary.set('youtube', 'Nicolas Teófilo')
+dictionary.delete('instagram')
+console.log(dictionary.table)
