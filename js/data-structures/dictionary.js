@@ -42,11 +42,28 @@ export class Dictionary {
     const valuePair = this.table[this.toStrFn(key)];
     return valuePair == null ? undefined : valuePair.value;
   }
-}
 
-const dictionary = new Dictionary();
-dictionary.set("instagram", "@nicolasteofilo");
-dictionary.set("youtube", "Nicolas Teófilo");
-dictionary.delete("instagram");
-console.log(dictionary.get("youtube"));
-console.log(dictionary.get("iii"));
+  keyValues() {
+    const valuesPairs = [
+    ]
+    for(const k in this.table) {
+      if(this.hasKey(k)) {
+        valuesPairs.push(this.table[k])
+      }
+    }
+    return valuesPairs
+  }
+
+  keys() {
+    return this.keyValues().map(valuePair => valuePair.key)
+  }
+
+  values() {
+    const values = [];
+    const valuesPair = this.keyValues();
+    for(let i = 0; i < valuesPair.length; i++) {
+      values.push(valuesPair[i].value)
+    }
+    return values
+  }
+}
