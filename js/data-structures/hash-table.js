@@ -59,21 +59,31 @@ export class HashTable {
     const valuePair = this.table[this.hashCode(key)];
     return valuePair == null ? undefined : valuePair.value;
   }
+
+  isEmpty() {
+    return this.table == {}
+  }
+
+  toString() {
+    if (this.isEmpty()) {
+      return "";
+    }
+    const keys = Object.keys(this.table);
+    let objString = `${keys[0]} => ${this.table[keys[0].toString()]}`
+    for(let i = 1; i < keys.length; i++) {
+      objString = `${objString},\n${keys[i]} => ${this.table[keys[i].toString()]}`
+    }
+    return objString
+  }
 }
 
 const hash = new HashTable();
-hash.put('Ygritte', 'ygritte@email.com')
-hash.put('John', 'john@email.com')
-hash.put('Amy', 'amy@email.com')
-hash.put('Jamie', 'jamie@email.com')
-hash.put('Amy', 'amy@email.com')
-hash.put('Nathan', 'nathan@email.com')
-hash.put('Sargeras', 'sargeras@email.com')
+hash.put("Ygritte", "ygritte@email.com");
+hash.put("John", "john@email.com");
+hash.put("Amy", "amy@email.com");
+hash.put("Jamie", "jamie@email.com");
+hash.put("Amy", "amy@email.com");
+hash.put("Nathan", "nathan@email.com");
+hash.put("Sargeras", "sargeras@email.com");
 
-console.log(`${hash.hashCode('Ygritte')} - Ygritte`)
-console.log(`${hash.hashCode('John')} - John`)
-console.log(`${hash.hashCode('Amy')} - Amy`)
-console.log(`${hash.hashCode('Jamie')} - Jamie`)
-console.log(`${hash.hashCode('Amy')} - Amy`)
-console.log(`${hash.hashCode('Nathan')} - Nathan`)
-console.log(`${hash.hashCode('Sargeras')} - Sargeras`)
+console.log(hash.toString());
