@@ -29,7 +29,7 @@ export class HashTable {
     for (let i = 0; i < tableKey.length; i++) {
       hash += tableKey.charCodeAt(i);
     }
-    return hash;
+    return hash % 37;
   }
 
   hashCode(key) {
@@ -61,5 +61,19 @@ export class HashTable {
   }
 }
 
-const hashTable = new HashTable();
-hashTable.put("instagram", "nicolasteofilo");
+const hash = new HashTable();
+hash.put('Ygritte', 'ygritte@email.com')
+hash.put('John', 'john@email.com')
+hash.put('Amy', 'amy@email.com')
+hash.put('Jamie', 'jamie@email.com')
+hash.put('Amy', 'amy@email.com')
+hash.put('Nathan', 'nathan@email.com')
+hash.put('Sargeras', 'sargeras@email.com')
+
+console.log(`${hash.hashCode('Ygritte')} - Ygritte`)
+console.log(`${hash.hashCode('John')} - John`)
+console.log(`${hash.hashCode('Amy')} - Amy`)
+console.log(`${hash.hashCode('Jamie')} - Jamie`)
+console.log(`${hash.hashCode('Amy')} - Amy`)
+console.log(`${hash.hashCode('Nathan')} - Nathan`)
+console.log(`${hash.hashCode('Sargeras')} - Sargeras`)
