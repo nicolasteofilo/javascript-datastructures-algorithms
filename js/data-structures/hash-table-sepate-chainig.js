@@ -45,7 +45,23 @@ class HashTableSeparateChainig {
     }
     return false;
   }
+
+  get(key) {
+    const position = this.hashCode(key);
+    const linkedList = this.table[position];
+    if (linkedList != null && !linkedList.isEmpty()) {
+      let current = linkedList.getHead();
+      while (current != null) {
+        if (current.key.key === key) {
+          return current.key.value;
+        }
+        current = current.next;
+      }
+    }
+    return undefined;
+  }
 }
 
 const hash = new HashTableSeparateChainig();
 hash.put("insta", "@onicolasteofilo");
+console.log(hash.get("insta"));
