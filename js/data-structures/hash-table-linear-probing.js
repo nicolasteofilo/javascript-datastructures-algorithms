@@ -54,7 +54,42 @@ export class HashTableLinearProbing {
         return this.table[index].value;
       }
     }
-    return undefined
+    return undefined;
+  }
+
+  verifyRemoveSideEffect(key, removedPosition) {
+    const hash = this.hashCode(key);
+    let index = removedPosition + 1;
+    while (this.table[index] != null) {
+      const posHash = this.hashCode(this.table[index].key);
+      if (posHash <= hash || posHash <= removedPosition) {
+        this.table[removedPosition] = this.table[index];
+        delete this.table[index];
+        removedPosition = index;
+      }
+      index++
+    }
+  }
+
+  remove(key) {
+    const position = this.hashCode(key);
+    if (this.table[position] != null) {
+      if (this.table[position].key === key) {
+        delete this.table[position];
+        this.verifyRemoveSideEffect(key, position);
+        return true;
+      }
+      let index = position + 1;
+      while (this.table[index] != null && this.table[index].key !== key) {
+        index++;
+      }
+      if (this.table[index] != null && this.table[index].key === key) {
+        delete this.table[index];
+        this.verifyRemoveSideEffect(key, position);
+        return true;
+      }
+    }
+    return false;
   }
 }
 
