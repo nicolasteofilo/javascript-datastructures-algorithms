@@ -32,8 +32,18 @@ export class HashTable {
     return hash % 37;
   }
 
+  djb2HashCode(key) {
+    /** @type {String} */
+    const tableKey = this.toStrFn(key);
+    let hash = 5381;
+    for (let i = 0; i < tableKey.length; i++) {
+      hash = hash * 33 + tableKey.charCodeAt(i);
+    }
+    return hash % 1013;
+  }
+
   hashCode(key) {
-    return this.loseloseHashCode(key);
+    return this.djb2HashCode(key);
   }
 
   put(key, value) {
@@ -61,7 +71,7 @@ export class HashTable {
   }
 
   isEmpty() {
-    return this.table == {}
+    return this.table == {};
   }
 
   toString() {
@@ -69,11 +79,13 @@ export class HashTable {
       return "";
     }
     const keys = Object.keys(this.table);
-    let objString = `${keys[0]} => ${this.table[keys[0].toString()]}`
-    for(let i = 1; i < keys.length; i++) {
-      objString = `${objString},\n${keys[i]} => ${this.table[keys[i].toString()]}`
+    let objString = `${keys[0]} => ${this.table[keys[0].toString()]}`;
+    for (let i = 1; i < keys.length; i++) {
+      objString = `${objString},\n${keys[i]} => ${
+        this.table[keys[i].toString()]
+      }`;
     }
-    return objString
+    return objString;
   }
 }
 
