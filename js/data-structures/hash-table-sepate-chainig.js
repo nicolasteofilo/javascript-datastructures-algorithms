@@ -60,6 +60,23 @@ class HashTableSeparateChainig {
     }
     return undefined;
   }
+
+  remove() {
+    const position = this.hashCode(25);
+    const linkedList = this.table[position];
+    if (linkedList != null && !linkedList.isEmpty()) {
+      let current = linkedList.getHead();
+      while (current != null) {
+        linkedList.remove(current.element);
+        if (linkedList.isEmpty()) {
+          delete this.table[position];
+        }
+        return true
+      }
+      current = current.next;
+    }
+    return false
+  }
 }
 
 const hash = new HashTableSeparateChainig();
