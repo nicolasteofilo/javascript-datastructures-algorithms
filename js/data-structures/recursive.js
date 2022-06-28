@@ -19,7 +19,15 @@ function factorialIterative(number) {
   for (let n = number; n > 1; n--) {
     total = total * n;
   }
-  return total
+  return total;
 }
 
-console.log(factorialIterative(5));
+function factorial(n) {
+  if (n === 1 || n === 0) {
+    return 1;
+  }
+  return n * factorial(n - 1);
+}
+
+console.info(factorialIterative(4))
+console.info(factorial(5));
