@@ -36,9 +36,6 @@ function factorial(n) {
   return n * factorial(n - 1);
 }
 
-console.info(factorialIterative(4));
-console.info(factorial(5));
-
 function fibonacciIterative(n) {
   if (n < 1) return 0;
   if (n <= 2) return 1;
@@ -60,3 +57,16 @@ function fibonacci(n) {
   if (n <= 2) return 1;
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
+
+function fibonacciMemoization(n) {
+  const memo = [0, 1];
+  const fibonacci = (n) => {
+    if (memo[n] != null) return memo[n];
+    return (memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo));
+  };
+  return fibonacci;
+}
+
+const fn = fibonacciMemoization(5);
+
+console.log(fn());
