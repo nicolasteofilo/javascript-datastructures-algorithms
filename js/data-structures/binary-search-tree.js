@@ -27,7 +27,6 @@ export class BinarySearchTree {
       if (node.right == null) {
         node.right = new Node(key);
       } else {
-        console.log("right recursive");
         this.insertNode(node.right, key);
       }
     }
@@ -68,6 +67,21 @@ export class BinarySearchTree {
   postOrderTraverse(callback) {
     this.postOrderTraverseNode(this.root, callback);
   }
+
+  minNode(node) {
+    let current = node;
+    if (node != null) {
+      while (current != null && current.left != null) {
+        current = current.left;
+      }
+      return current;
+    }
+    return undefined;
+  }
+
+  min() {
+    return this.minNode(this.root);
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -87,9 +101,10 @@ tree.insert(20);
 tree.insert(18);
 tree.insert(25);
 
-console.log(tree.root);
+// console.log(tree.root);
 
 const printNode = (value) => console.log(value);
 // tree.inOrderTraverse(printNode);
 // tree.preOrderTraverse(printNode);
-tree.postOrderTraverse(printNode);
+// tree.postOrderTraverse(printNode);
+console.log(tree.min());
