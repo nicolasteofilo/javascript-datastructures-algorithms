@@ -79,8 +79,23 @@ export class BinarySearchTree {
     return undefined;
   }
 
+  maxNode(node) {
+    let current = node;
+    if (node != null) {
+      while (current != null && current.right != null) {
+        current = current.right;
+      }
+      return current;
+    }
+    return undefined;
+  }
+
   min() {
     return this.minNode(this.root);
+  }
+
+  max() {
+    return this.maxNode(this.root);
   }
 }
 
@@ -108,3 +123,4 @@ const printNode = (value) => console.log(value);
 // tree.preOrderTraverse(printNode);
 // tree.postOrderTraverse(printNode);
 console.log(tree.min());
+console.log(tree.max());
