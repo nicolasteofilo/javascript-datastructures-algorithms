@@ -129,7 +129,7 @@ export class BinarySearchTree {
         return node;
       }
       
-      const aux = this.minNode(node.right)
+      const aux = this.minNode(node.right) // aux -> auxiliar
       node.key = aux.key;
       node.right = this.removeNode(node.right, aux.key);
       return node;
