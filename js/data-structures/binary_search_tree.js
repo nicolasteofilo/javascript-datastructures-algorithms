@@ -103,8 +103,52 @@ class BinarySearchTree {
     }
     return traverserd;
   }
-  preOrderTraverse(node = this.root, traverserd = []) {}
-  postOrderTraverse(node = this.root, traverserd = []) {}
+
+  preOrderTraverse(
+    node = this.root,
+    callback = (value) => {},
+    traverserd = []
+  ) {
+    if (node === null) {
+      return traverserd;
+    }
+    callback(node);
+    traverserd.push(node);
+    if (node.right) {
+      callback(node.right);
+      traverserd.push(...this.preOrderTraverse(node.right));
+    }
+    if (node.left) {
+      callback(node.left);
+      traverserd.push(...this.preOrderTraverse(node.left));
+    }
+    return traverserd;
+  }
+
+  postOrderTraverse(
+    node = this.root,
+    callback = (value) => {},
+    traverserd = []
+  ) {
+    if (node === null) {
+      return traverserd;
+    }
+    if (node.right) {
+      callback(node.right);
+      traverserd.push(...this.preOrderTraverse(node.right));
+    }
+    if (node.left) {
+      callback(node.left);
+      traverserd.push(...this.preOrderTraverse(node.left));
+    }
+    callback(node);
+    traverserd.push(node);
+    return traverserd;
+  }
+
+  search(value) {
+    return this.postOrderTraverse().find((node) => node.value === value.toString())
+  }
 }
 
 export default BinarySearchTree;
@@ -122,3 +166,6 @@ console.log(JSON.stringify(tree.root, null, 2));
 console.log("min -->", tree.min().value);
 console.log("max -->", tree.max().value);
 console.log("inOrderTraverse -->", tree.inOrderTraverse());
+console.log("preOrderTraverse -->", tree.preOrderTraverse());
+console.log("postOrderTraverse -->", tree.postOrderTraverse());
+console.log("search -->", tree.search(12));
