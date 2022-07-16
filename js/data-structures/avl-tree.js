@@ -44,7 +44,13 @@ class AVLTree extends BinarySearchTree {
     const tmp = node.left;
     node.left = tmp.right;
     tmp.right = node;
+    return tmp;
+  }
 
+  rotationRR(node) {
+    const tmp = node.right;
+    node.right = tmp.left;
+    tmp.left = node;
     return tmp;
   }
 }
