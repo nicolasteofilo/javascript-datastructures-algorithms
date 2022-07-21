@@ -30,6 +30,13 @@ class AVLTree extends BinarySearchTree {
     return node;
   }
 
+  rotationRR(node) {
+    const tmp = node.right;
+    node.right = tmp.left;
+    tmp.left = node;
+    return tmp;
+  }
+
   getBalanceFactor(node) {
     const heightDifference =
       this.getNodeHeight(node.left) - this.getNodeHeight(node.right);
