@@ -1,5 +1,5 @@
 import { BinarySearchTree } from "./binary-search-tree.js";
-import { defaultCompare, BalanceFactor } from "../utils.js";
+import { defaultCompare, BalanceFactor, Compare } from "../utils.js";
 
 class AVLTree extends BinarySearchTree {
   constructor(compareFn = defaultCompare) {
@@ -67,4 +67,61 @@ class AVLTree extends BinarySearchTree {
     tmp.left = node;
     return tmp;
   }
+
+    /**
+   * Left right case: rotate left then right
+   * @param node Node<T>
+   */
+     rotationLR(node) {
+      node.left = this.rotationRR(node.left);
+      return this.rotationLL(node);
+    }
+  
+    /**
+     * Right left case: rotate right then left
+     * @param node Node<T>
+     */
+    rotationRL(node) {
+      node.right = this.rotationLL(node.right);
+      return this.rotationRR(node);
+    }
+
+  inset(key) {
+    this.root = this.insertNode(this.root, key);
+  }
+
+  insertNode(node, key) {
+    // like BTS
+    if (node === null) {
+      this.root = new Node(key);
+    } else if(this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      node.left = this.insertNode(node.left, key)
+    } else if(this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+      node.right = this.insertNode(node.right, key)
+    } else {
+      return node; // duplicated node
+    }
+
+    const balanceFactor = this.getBalanceFactor(node); // verify the balance factor
+    if(balanceFactor === BalanceFactor.UNBALANCED_LEFT) { // if left side it is heavy
+      if(this.compareFn(key, node.left.key) === Compare.LESS_THAN) {
+        node = this.rotationLL(node);
+      } else {
+        this.rotationLR(node);
+      }
+    }
+    if(balanceFactor === BalanceFactor.UNBALANCED_RIGHT) { // if right side it is heavy
+      if(this.compareFn(key, node.left.key) === Compare.BIGGER_THAN) {
+        node = this.rotationRR(node);
+      } else {
+        this.rotationRL(node);
+      }
+    }
+
+    return node;
+  }
 }
+
+const avl = new AVLTree()
+avl.insert(2)
+console.log(avl.root)
