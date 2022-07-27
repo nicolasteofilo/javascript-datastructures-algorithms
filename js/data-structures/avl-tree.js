@@ -68,50 +68,48 @@ class AVLTree extends BinarySearchTree {
     return tmp;
   }
 
-    /**
+  /**
    * Left right case: rotate left then right
    * @param node Node<T>
    */
-     rotationLR(node) {
-      node.left = this.rotationRR(node.left);
-      return this.rotationLL(node);
-    }
-  
-    /**
-     * Right left case: rotate right then left
-     * @param node Node<T>
-     */
-    rotationRL(node) {
-      node.right = this.rotationLL(node.right);
-      return this.rotationRR(node);
-    }
+  rotationLR(node) {
+    node.left = this.rotationRR(node.left);
+    return this.rotationLL(node);
+  }
 
-  inset(key) {
-    this.root = this.insertNode(this.root, key);
+  /**
+   * Right left case: rotate right then left
+   * @param node Node<T>
+   */
+  rotationRL(node) {
+    node.right = this.rotationLL(node.right);
+    return this.rotationRR(node);
   }
 
   insertNode(node, key) {
     // like BTS
     if (node === null) {
       this.root = new Node(key);
-    } else if(this.compareFn(key, node.key) === Compare.LESS_THAN) {
-      node.left = this.insertNode(node.left, key)
-    } else if(this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
-      node.right = this.insertNode(node.right, key)
+    } else if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      node.left = this.insertNode(node.left, key);
+    } else if (this.compareFn(key, node.key) === Compare.BIGGER_THAN) {
+      node.right = this.insertNode(node.right, key);
     } else {
       return node; // duplicated node
     }
 
     const balanceFactor = this.getBalanceFactor(node); // verify the balance factor
-    if(balanceFactor === BalanceFactor.UNBALANCED_LEFT) { // if left side it is heavy
-      if(this.compareFn(key, node.left.key) === Compare.LESS_THAN) {
+    if (balanceFactor === BalanceFactor.UNBALANCED_LEFT) {
+      // if left side it is heavy
+      if (this.compareFn(key, node.left.key) === Compare.LESS_THAN) {
         node = this.rotationLL(node);
       } else {
         this.rotationLR(node);
       }
     }
-    if(balanceFactor === BalanceFactor.UNBALANCED_RIGHT) { // if right side it is heavy
-      if(this.compareFn(key, node.left.key) === Compare.BIGGER_THAN) {
+    if (balanceFactor === BalanceFactor.UNBALANCED_RIGHT) {
+      // if right side it is heavy
+      if (this.compareFn(key, node.left.key) === Compare.BIGGER_THAN) {
         node = this.rotationRR(node);
       } else {
         this.rotationRL(node);
@@ -120,8 +118,45 @@ class AVLTree extends BinarySearchTree {
 
     return node;
   }
+
+  removeNode(node, key) {
+    node = super.removeNode(node, key);
+    if (node === null) {
+      // if the key is the root
+      return node;
+    }
+
+    // verify if the tree is balanced
+    const balanceFactor = this.getBalanceFactor(node);
+    if(balanceFactor === BalanceFactor.UNBALANCED_LEFT) { // if left side it is heavy
+      const balanceFactorLeft = this.getBalanceFactor(node.left);
+      if(balanceFactorLeft === BalanceFactor.BALANCED || balanceFactorLeft === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT) {
+        return this.rotationLL(node); // simple rotation to right
+      }
+      if(balanceFactorLeft === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT) {
+        return this.rotationLR(node.left); // left rotation and after right rotation
+      }
+    }
+    if(balanceFactor === BalanceFactor.UNBALANCED_RIGHT) { // if right side it is heavy
+      const balanceFactorRight = this.getBalanceFactor(node.right);
+      if(balanceFactorRight === BalanceFactor.BALANCED || balanceFactorRight === BalanceFactor.SLIGHTLY_UNBALANCED_RIGHT) {
+        return this.rotationRR(node) // simple rotation to left
+      }
+      if(balanceFactorRight === BalanceFactor.SLIGHTLY_UNBALANCED_LEFT) {
+        return this.rotationRL(node.right) // right rotation and after left rotation
+      }
+    }
+  }
+
+  inset(key) {
+    this.root = this.insertNode(this.root, key);
+  }
+
+  remove(key) {
+    this.root = this.removeNode(this.root, key);
+  }
 }
 
-const avl = new AVLTree()
-avl.insert(2)
-console.log(avl.root)
+const avl = new AVLTree();
+avl.insert(2);
+console.log(avl.root);
